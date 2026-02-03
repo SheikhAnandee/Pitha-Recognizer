@@ -1,6 +1,6 @@
-remote_theme: LeNPaul/Millennial@gh-pages
+remote_theme: mmistakes/atembic@master
 plugins:
-  - jekyll-remote-theme
+    - jekyll-remote-theme
 
 title: Pitha Recognizer
 description: An image classification API that classifies 20 traditional Bangladeshi Pitha varieties.
