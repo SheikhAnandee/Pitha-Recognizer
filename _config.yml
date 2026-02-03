@@ -1,4 +1,4 @@
-remote_theme: koumaza/smui-sapper-rollup-template@master
+remote_theme: emilbaehr/automatic-app-landing-page@master
 plugins:
   - jekyll-remote-theme
 
