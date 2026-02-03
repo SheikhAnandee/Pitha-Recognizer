@@ -1,4 +1,4 @@
-remote_theme: emilbaehr/automatic-app-landing-page@master
+remote_theme: LeNPaul/Millennial@gh-pages
 plugins:
   - jekyll-remote-theme
 
