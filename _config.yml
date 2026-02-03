@@ -1,4 +1,4 @@
-remote_theme: mmistakes/atembic@main
+remote_theme: mmistakes/atembic@master
 plugins:
     - jekyll-remote-theme
 title: Pitha Recognizer
