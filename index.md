@@ -1,7 +1,6 @@
 ---
 title: Home
-layout: default
-permalink: /
+layout: page
 --- 
 
 # Image Classifier
