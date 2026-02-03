@@ -1,9 +1,9 @@
------------
+---
 title: Home
 layout: Page
-------------
+---
 
-# Tmage Classifier
+# Image Classifier
 Can classify 20 different types of Bangladeshi pithas <br/>
 Pitha Types:
 
