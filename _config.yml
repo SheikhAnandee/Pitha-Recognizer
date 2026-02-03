@@ -1,4 +1,4 @@
-remote_theme: kothing/kothing-theme@master
+remote_theme: koumaza/smui-sapper-rollup-template@master
 plugins:
   - jekyll-remote-theme
 
