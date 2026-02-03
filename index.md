@@ -1,14 +1,7 @@
-<!-- ---
+---
 title: Pitha Recognizer
 layout: page
---- -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Pitha Recognizer</title>
-</head>
-<body>
+--- 
 
 # Image Classifier
 Can classify 20 different types of Bangladeshi pithas <br/>
@@ -35,5 +28,3 @@ Pitha Types:
 19. Dim Shundori Pitha
 20. Atikka Pitha
 
-</body>
-</html>
