@@ -5,3 +5,21 @@ layout: Page
 
 <input id="photo" type="file">
 <div id="results"></div>
+<script type="module">
+    import { Client } from "@gradio/client";
+
+    const input = document.getElementById("photo");
+    const results = document.getElementById("results");
+    
+    input.addEventListener("change", async () => {
+        const client = await Client.connect("SheikhAnandee/pitha-recognizer"); // connect to the HuggingFace Space
+            
+        const file = input.files[0]; 
+        const result = await client.predict("/predict", { image: file }); // send the file as image component
+        const label = result.data[0].label;     // Get the most probable label
+        
+        const imgURL = URL.createObjectURL(file);
+        results.innerHTML = `<br/><img src="${imgURL}" width="500"/><p>${label}</p>`;
+      });
+	
+</script>
