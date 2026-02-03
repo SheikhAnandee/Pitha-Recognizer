@@ -1,5 +1,5 @@
 ---
-title: Pitha Recognizer
+title: Home
 layout: page
 --- 
 
