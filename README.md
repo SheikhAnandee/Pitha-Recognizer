@@ -35,7 +35,7 @@ Details can be found in `notebooks/pitha_images_prep.ipynb`
 
 # Model Deployment
 I deployed to model to HuggingFace Spaces Gradio App. The implementation can be found in `deployment` folder or [here](https://huggingface.co/spaces/SheikhAnandee/pitha-recognizer). <br/>
-<img src = "deployment/gradio_app.png" width="350" height="350">
+<img src = "deployment/gradio_app.png" width="400" height="600">
 
 # API integration with GitHub Pages
 The deployed model API is integrated [here](https://sheikhanandee.github.io/Pitha-Recognizer/) in GitHub Pages Website. Implementation and other details can be found in `docs` folder.
