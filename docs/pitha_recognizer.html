@@ -15,59 +15,37 @@ layout: page
 </div>
 
 <script type="module">
-  import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/+esm";
+  import { Client } from "https://esm.sh/@gradio/client";
 
-  const photo = document.getElementById("photo");
+  const input = document.getElementById("photo");
   const results = document.getElementById("results");
 
-  // Connect to your Gradio model
-  const client = await Client.connect("SheikhAnandee/pitha-recognizer");
+  input.addEventListener("change", async () => {
+    const file = input.files[0];
+    if (!file) return;
 
-  photo.addEventListener("change", async () => {
-    if (!photo.files.length) return;
-
-    const file = photo.files[0];
-    const imageURL = URL.createObjectURL(file);
-
-    results.innerHTML = `
-      <img src="${imageURL}">
-      <p class="loading">🔍 Analyzing image...</p>
-    `;
+    results.innerHTML = "⏳ Predicting...";
 
     try {
-      const result = await client.predict("/recognize_image", { image: file });
-      const data = result.data;
+      const client = await Client.connect("SheikhAnandee/pitha-recognizer");
 
-      let label;
+      const result = await client.predict("/predict", {
+        image: file
+      });
 
-      // Case: simple label string
-      if (typeof data[0] === "string") {
-        label = data[0];
-      } 
-      // Case: object with label
-      else if (typeof data[0] === "object" && !Array.isArray(data[0])) {
-        label = data[0].label;
-      } 
-      // Case: array of predictions
-      else if (Array.isArray(data[0])) {
-        label = data[0][0].label;
-      }
+      // Gradio usually returns an array
+      const prediction = result.data[0];
+      const label = prediction.label ?? prediction;
 
-      // Display prediction (only pitha labels)
+      const imgURL = URL.createObjectURL(file);
+
       results.innerHTML = `
-        <img src="${imageURL}">
-        <p class="prediction">
-          ✅ Predicted Pitha: <b>${label}</b>
-        </p>
+        <img src="${imgURL}" width="400"/><br/>
+        <strong>Prediction:</strong> ${label}
       `;
-
-    } catch (error) {
-      console.error(error);
-      results.innerHTML = `
-        <p class="prediction" style="color:red;">
-          ❌ Prediction failed. Please try again.
-        </p>
-      `;
+    } catch (err) {
+      console.error(err);
+      results.innerHTML = "❌ Prediction failed. Check console.";
     }
   });
 </script>
