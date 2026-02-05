@@ -20,7 +20,7 @@ layout: page
   const input = document.getElementById("photo");
   const results = document.getElementById("results");
 
-  let clientPromise = Client.connect("SheikhAnandee/pitha-recognizer");
+  const clientPromise = Client.connect("SheikhAnandee/pitha-recognizer");
 
   input.addEventListener("change", async () => {
     const file = input.files[0];
@@ -31,22 +31,24 @@ layout: page
     try {
       const client = await clientPromise;
 
-      const result = await client.predict("/predict", {
-        image: file
+      const result = await client.predict(0, {
+        image: new Blob([file], { type: file.type })
       });
 
-      const output = result.data[0];
-      const label = typeof output === "string" ? output : output.label;
+      const label =
+        typeof result.data[0] === "string"
+          ? result.data[0]
+          : result.data[0].label;
 
       const imgURL = URL.createObjectURL(file);
 
       results.innerHTML = `
-        <img src="${imgURL}" width="400"/><br>
+        <img src="${imgURL}" width="350" style="border-radius:12px"/><br><br>
         <strong>Prediction:</strong> ${label}
       `;
     } catch (err) {
       console.error(err);
-      results.innerHTML = "❌ Prediction failed. Check console.";
+      results.innerHTML = "❌ Prediction failed. Open console for details.";
     }
   });
 </script>
