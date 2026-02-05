@@ -22,6 +22,8 @@ layout: page
 
   const client = await Client.connect("SheikhAnandee/pitha-recognizer");
 
+  const CONFIDENCE_THRESHOLD = 0.75; // 75%
+
   photo.addEventListener("change", async () => {
     if (!photo.files.length) return;
 
@@ -35,12 +37,36 @@ layout: page
 
     try {
       const result = await client.predict("/recognize_image", { image: file });
-      const label = result.data[0].label;
 
+      const prediction = result.data[0];
+      const label = prediction.label;
+
+      // supports both "confidence" and "score"
+      const confidence =
+        prediction.confidence ??
+        prediction.score ??
+        0;
+
+      // ❌ Reject irrelevant images
+      if (confidence < CONFIDENCE_THRESHOLD) {
+        results.innerHTML = `
+          <img src="${imageURL}">
+          <p class="prediction" style="color:red;">
+            ❌ Prediction failed. Please try again.
+          </p>
+        `;
+        return;
+      }
+
+      // ✅ Valid pitha prediction
       results.innerHTML = `
         <img src="${imageURL}">
-        <p class="prediction">✅ Predicted Pitha: ${label}</p>
+        <p class="prediction">
+          ✅ Predicted Pitha: <b>${label}</b><br>
+          🔢 Confidence: ${(confidence * 100).toFixed(1)}%
+        </p>
       `;
+
     } catch (error) {
       console.error(error);
       results.innerHTML = `
