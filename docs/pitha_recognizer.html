@@ -14,13 +14,11 @@ layout: page
   <div id="results"></div>
 </div>
 
-<script type="module">
+script type="module">
   import { Client } from "https://esm.sh/@gradio/client";
 
   const input = document.getElementById("photo");
   const results = document.getElementById("results");
-
-  const clientPromise = Client.connect("SheikhAnandee/pitha-recognizer");
 
   input.addEventListener("change", async () => {
     const file = input.files[0];
@@ -29,26 +27,25 @@ layout: page
     results.innerHTML = "⏳ Predicting...";
 
     try {
-      const client = await clientPromise;
+      const client = await Client.connect("SheikhAnandee/pitha-recognizer");
 
-      const result = await client.predict(0, {
-        image: new Blob([file], { type: file.type })
+      const result = await client.predict("/predict", {
+        image: file
       });
 
-      const label =
-        typeof result.data[0] === "string"
-          ? result.data[0]
-          : result.data[0].label;
+      // Gradio usually returns an array
+      const prediction = result.data[0];
+      const label = prediction.label ?? prediction;
 
       const imgURL = URL.createObjectURL(file);
 
-      results.innerHTML = `
-        <img src="${imgURL}" width="350" style="border-radius:12px"/><br><br>
+      results.innerHTML = 
+        <img src="${imgURL}" width="400"/><br/>
         <strong>Prediction:</strong> ${label}
-      `;
+      ;
     } catch (err) {
       console.error(err);
-      results.innerHTML = "❌ Prediction failed. Open console for details.";
+      results.innerHTML = "❌ Prediction failed. Check console.";
     }
   });
 </script>
