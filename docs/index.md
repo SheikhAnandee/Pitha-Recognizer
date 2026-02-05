@@ -7,7 +7,7 @@ layout: page
 
 This AI-powered system can classify **20 different traditional Bangladeshi pithas** using image recognition.
 
-👉 Go to **Pitha Recognizer** from the menu to try it.
+👉 Go to [**Pitha Recognizer**](pitha_recognizer.html){: .cta-link }
 
 ---
 

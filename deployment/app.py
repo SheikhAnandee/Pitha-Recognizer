@@ -3,8 +3,9 @@ import gradio as gr
 
 pitha_labels = [
  'Chit ruti Pitha',
- 'Pata Pitha (Leaf-shaped Pitha)',
- 'Atikka Pitha', 'bhapa Pitha',
+ 'Pata Pitha (Leaf-Shaped Pitha)',
+ 'Atikka Pitha', 
+ 'Bhapa Pitha',
  'Bibikhana Pitha',
  'Binni Chaler Pitha',
  'Chitoi Pitha',
