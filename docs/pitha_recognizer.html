@@ -20,8 +20,8 @@ layout: page
   const photo = document.getElementById("photo");
   const results = document.getElementById("results");
 
+  // Connect to your Gradio model
   const client = await Client.connect("SheikhAnandee/pitha-recognizer");
-  const CONFIDENCE_THRESHOLD = 0.75;
 
   photo.addEventListener("change", async () => {
     if (!photo.files.length) return;
@@ -38,61 +38,26 @@ layout: page
       const result = await client.predict("/recognize_image", { image: file });
       const data = result.data;
 
-      /*
-        POSSIBLE DATA SHAPES:
-        1) ["Patishapta"]
-        2) [{ label: "Patishapta", confidence: 0.82 }]
-        3) [[{ label, confidence }, { label, confidence }]]
-      */
+      let label;
 
-      let label = null;
-      let confidence = null;
-
-      // Case 1: simple label string
+      // Case: simple label string
       if (typeof data[0] === "string") {
         label = data[0];
-      }
-
-      // Case 2: object with label
+      } 
+      // Case: object with label
       else if (typeof data[0] === "object" && !Array.isArray(data[0])) {
         label = data[0].label;
-        confidence = data[0].confidence ?? data[0].score ?? null;
-      }
-
-      // Case 3: array of predictions
+      } 
+      // Case: array of predictions
       else if (Array.isArray(data[0])) {
-        const top = data[0][0];
-        label = top.label;
-        confidence = top.confidence ?? top.score ?? null;
+        label = data[0][0].label;
       }
 
-      // If confidence exists and is low → reject
-      if (confidence !== null && confidence < CONFIDENCE_THRESHOLD) {
-        results.innerHTML = `
-          <img src="${imageURL}">
-          <p class="prediction" style="color:red;">
-            ❌ Prediction failed. Please try again.
-          </p>
-        `;
-        return;
-      }
-
-      // If label is missing → reject
-      if (!label) {
-        results.innerHTML = `
-          <p class="prediction" style="color:red;">
-            ❌ Prediction failed. Please try again.
-          </p>
-        `;
-        return;
-      }
-
-      // Accept prediction
+      // Display prediction (only pitha labels)
       results.innerHTML = `
         <img src="${imageURL}">
         <p class="prediction">
           ✅ Predicted Pitha: <b>${label}</b>
-          ${confidence !== null ? `<br>🔢 Confidence: ${(confidence * 100).toFixed(1)}%` : ""}
         </p>
       `;
 
