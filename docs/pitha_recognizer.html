@@ -1,57 +1,87 @@
 ---
 title: Pitha Recognizer
 layout: page
---- 
+---
 
-<input id="photo" type="file" accept="image/*">
-<div id="results"></div>
+<style>
+  .recognizer-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  .recognizer-container h2 {
+    margin-bottom: 10px;
+  }
+
+  .recognizer-container p {
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  input[type="file"] {
+    padding: 12px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background: #fafafa;
+  }
+
+  #results img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+  }
+
+  .prediction {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c7be5;
+  }
+</style>
+
+<div class="recognizer-container">
+  <h2>🥮 Pitha Recognizer</h2>
+  <p>Upload an image of a Bangladeshi pitha to identify its type</p>
+
+  <input id="photo" type="file" accept="image/*">
+  <div id="results"></div>
+</div>
 
 <script type="module">
-  // Import the Gradio Client library from CDN
-  // This lets JavaScript talk to your Hugging Face Space
   import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/+esm";
 
-  // Get the <input type="file"> element from the page
   const photo = document.getElementById("photo");
-
-  // Get the <div id="results"> where we will show image + prediction
   const results = document.getElementById("results");
 
-  // Connect to your Hugging Face Space
-  // "SheikhAnandee/pitha-recognizer" is the Space repo name
-  // This creates a client object that can call your Gradio app
   const client = await Client.connect("SheikhAnandee/pitha-recognizer");
 
-  // Listen for when a user selects an image file
   photo.addEventListener("change", async () => {
-
-    // If no file is selected, stop here
     if (!photo.files.length) return;
 
-    // Get the selected image file
     const file = photo.files[0];
 
-    // Show the uploaded image immediately (before prediction)
-    // URL.createObjectURL(file) creates a temporary image URL
-    results.innerHTML = `<img src="${URL.createObjectURL(file)}" width="500">`;
+    results.innerHTML = `
+      <img src="${URL.createObjectURL(file)}">
+      <p class="prediction">Analyzing...</p>
+    `;
 
-    // Send the image to the Gradio backend
-    // "/recognize_image" is the API endpoint defined in your Gradio app
-    // image: file matches the input name in Python
     const result = await client.predict("/recognize_image", {
       image: file
     });
 
-    // Gradio returns data as an array
-    // result.data[0] is the Label output
-    // .label contains the predicted class name
     const label = result.data[0].label;
 
-    // Update the page with image + prediction text
     results.innerHTML = `
-      <img src="${URL.createObjectURL(file)}" width="500">
-      <p>${label}</p>
+      <img src="${URL.createObjectURL(file)}">
+      <p class="prediction">✅ Predicted: ${label}</p>
     `;
   });
 </script>
-
