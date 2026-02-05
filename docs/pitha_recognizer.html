@@ -15,36 +15,94 @@ layout: page
 </div>
 
 <script type="module">
-  import { Client } from "https://esm.sh/@gradio/client";
+  import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/+esm";
 
-  const input = document.getElementById("photo");
+  const photo = document.getElementById("photo");
   const results = document.getElementById("results");
 
-  input.addEventListener("change", async () => {
-    const file = input.files[0];
-    if (!file) return;
+  const client = await Client.connect("SheikhAnandee/pitha-recognizer");
+  const CONFIDENCE_THRESHOLD = 0.75;
 
-    results.innerHTML = "⏳ Predicting...";
+  photo.addEventListener("change", async () => {
+    if (!photo.files.length) return;
+
+    const file = photo.files[0];
+    const imageURL = URL.createObjectURL(file);
+
+    results.innerHTML = `
+      <img src="${imageURL}">
+      <p class="loading">🔍 Analyzing image...</p>
+    `;
 
     try {
-      const client = await Client.connect("SheikhAnandee/pitha-recognizer");
+      const result = await client.predict("/recognize_image", { image: file });
+      const data = result.data;
 
-      const result = await client.predict("/predict", {
-        image: file
-      });
+      /*
+        POSSIBLE DATA SHAPES:
+        1) ["Patishapta"]
+        2) [{ label: "Patishapta", confidence: 0.82 }]
+        3) [[{ label, confidence }, { label, confidence }]]
+      */
 
-      const prediction = result.data[0];
-      const label = prediction.label ?? prediction;
+      let label = null;
+      let confidence = null;
 
-      const imgURL = URL.createObjectURL(file);
+      // Case 1: simple label string
+      if (typeof data[0] === "string") {
+        label = data[0];
+      }
 
+      // Case 2: object with label
+      else if (typeof data[0] === "object" && !Array.isArray(data[0])) {
+        label = data[0].label;
+        confidence = data[0].confidence ?? data[0].score ?? null;
+      }
+
+      // Case 3: array of predictions
+      else if (Array.isArray(data[0])) {
+        const top = data[0][0];
+        label = top.label;
+        confidence = top.confidence ?? top.score ?? null;
+      }
+
+      // If confidence exists and is low → reject
+      if (confidence !== null && confidence < CONFIDENCE_THRESHOLD) {
+        results.innerHTML = `
+          <img src="${imageURL}">
+          <p class="prediction" style="color:red;">
+            ❌ Prediction failed. Please try again.
+          </p>
+        `;
+        return;
+      }
+
+      // If label is missing → reject
+      if (!label) {
+        results.innerHTML = `
+          <p class="prediction" style="color:red;">
+            ❌ Prediction failed. Please try again.
+          </p>
+        `;
+        return;
+      }
+
+      // Accept prediction
       results.innerHTML = `
-        <img src="${imgURL}" width="400"/><br/>
-        <strong>Prediction:</strong> ${label}
+        <img src="${imageURL}">
+        <p class="prediction">
+          ✅ Predicted Pitha: <b>${label}</b>
+          ${confidence !== null ? `<br>🔢 Confidence: ${(confidence * 100).toFixed(1)}%` : ""}
+        </p>
       `;
-    } catch (err) {
-      console.error(err);
-      results.innerHTML = "❌ Prediction failed. Check console.";
+
+    } catch (error) {
+      console.error(error);
+      results.innerHTML = `
+        <p class="prediction" style="color:red;">
+          ❌ Prediction failed. Please try again.
+        </p>
+      `;
     }
   });
 </script>
