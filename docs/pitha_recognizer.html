@@ -4,46 +4,62 @@ layout: page
 ---
 
 <style>
+  /* Page background */
+  body {
+    background:
+      linear-gradient(rgba(255,248,240,0.92), rgba(255,248,240,0.92)),
+      url("D:\Pitha-Recognizer\docs\images\premium_photo-1694704423368-6f189f46d4fd.avif");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  /* Main card */
   .recognizer-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 25px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    max-width: 720px;
+    margin: 60px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     text-align: center;
   }
 
   .recognizer-container h2 {
     margin-bottom: 10px;
+    font-size: 2rem;
   }
 
   .recognizer-container p {
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
+  /* File input */
   input[type="file"] {
-    padding: 12px;
-    border: 2px dashed #ccc;
-    border-radius: 8px;
     width: 100%;
+    padding: 14px;
+    border: 2px dashed #d8b58a;
+    border-radius: 10px;
+    background: #fffaf4;
     cursor: pointer;
-    margin-bottom: 20px;
-    background: #fafafa;
+    font-size: 1rem;
   }
 
+  /* Image preview */
   #results img {
     max-width: 100%;
-    border-radius: 10px;
-    margin-top: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   }
 
+  /* Prediction text */
   .prediction {
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #2c7be5;
+    color: #8b4513;
   }
 </style>
 
@@ -70,18 +86,25 @@ layout: page
 
     results.innerHTML = `
       <img src="${URL.createObjectURL(file)}">
-      <p class="prediction">Analyzing...</p>
+      <p class="prediction">🔍 Analyzing pitha...</p>
     `;
 
-    const result = await client.predict("/recognize_image", {
-      image: file
-    });
+    try {
+      const result = await client.predict("/recognize_image", {
+        image: file
+      });
 
-    const label = result.data[0].label;
+      const label = result.data[0].label;
 
-    results.innerHTML = `
-      <img src="${URL.createObjectURL(file)}">
-      <p class="prediction">✅ Predicted: ${label}</p>
-    `;
+      results.innerHTML = `
+        <img src="${URL.createObjectURL(file)}">
+        <p class="prediction">✅ Predicted: ${label}</p>
+      `;
+    } catch (error) {
+      results.innerHTML = `
+        <p class="prediction">❌ Prediction failed. Please try again.</p>
+      `;
+      console.error(error);
+    }
   });
 </script>
