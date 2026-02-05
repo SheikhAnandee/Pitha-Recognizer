@@ -1,17 +1,21 @@
-/* Hide auto page title but keep navbar */
-/* Hide ONLY the auto page title, keep navbar */
-/* Hide Minima auto page title, keep navbar */
-
-
+/* ============================ */
+/* PAGE BACKGROUND & FONT */
+/* ============================ */
 body {
-  background: linear-gradient(135deg, #f3d89d, hsl(61, 86%, 72%));
+  background: #fff3ca; /* changed from gradient to soft cream */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-.page-header .page-title {
-    display: none !important;
+
+/* ============================ */
+/* HIDE AUTO PAGE TITLE (Minima theme) */
+/* ============================ */
+.page__title {
+  display: none !important;
 }
 
-/* Main card */
+/* ============================ */
+/* Main card styling (Pitha Recognizer) */
+/* ============================ */
 .recognizer-container {
   max-width: 720px;
   margin: 60px auto;
@@ -33,7 +37,9 @@ body {
   font-size: 1rem;
 }
 
-/* File input */
+/* ============================ */
+/* File input styling */
+/* ============================ */
 input[type="file"] {
   width: 100%;
   padding: 16px;
@@ -49,7 +55,9 @@ input[type="file"]:hover {
   border-color: #818cf8;
 }
 
+/* ============================ */
 /* Result area */
+/* ============================ */
 #results {
   margin-top: 25px;
 }
@@ -73,7 +81,10 @@ input[type="file"]:hover {
   font-size: 1.1rem;
   margin-top: 15px;
 }
+
+/* ============================ */
 /* CTA link for Home page */
+/* ============================ */
 .cta-link {
   text-decoration: none;
   font-weight: 600;
@@ -89,5 +100,3 @@ input[type="file"]:hover {
   text-decoration: none;
   cursor: pointer;
 }
-
-
