@@ -1,9 +1,6 @@
 /* Hide auto page title but keep navbar */
 /* Hide ONLY the auto page title, keep navbar */
 /* Hide Minima auto page title, keep navbar */
-.page-heading {
-  display: none !important;
-}
 
 
 body {
@@ -88,4 +85,8 @@ input[type="file"]:hover {
   background-color: #4338ca;
   text-decoration: none;
   cursor: pointer;
+}
+
+.page__title {
+  display: none !important;
 }
