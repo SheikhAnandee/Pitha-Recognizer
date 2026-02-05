@@ -1,6 +1,6 @@
 /* Hide auto page title but keep navbar */
-.page h1,
-.post h1 {
+/* Hide ONLY the auto page title, keep navbar */
+.page-content > h1 {
   display: none !important;
 }
 
