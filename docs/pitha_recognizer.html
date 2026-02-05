@@ -14,7 +14,7 @@ layout: page
   <div id="results"></div>
 </div>
 
-script type="module">
+<script type="module">
   import { Client } from "https://esm.sh/@gradio/client";
 
   const input = document.getElementById("photo");
@@ -33,16 +33,15 @@ script type="module">
         image: file
       });
 
-      // Gradio usually returns an array
       const prediction = result.data[0];
       const label = prediction.label ?? prediction;
 
       const imgURL = URL.createObjectURL(file);
 
-      results.innerHTML = 
+      results.innerHTML = `
         <img src="${imgURL}" width="400"/><br/>
         <strong>Prediction:</strong> ${label}
-      ;
+      `;
     } catch (err) {
       console.error(err);
       results.innerHTML = "❌ Prediction failed. Check console.";
