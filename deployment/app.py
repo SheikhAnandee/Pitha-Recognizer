@@ -4,27 +4,27 @@ import gradio as gr
 pitha_labels = [
  'Chit ruti Pitha',
  'Pata Pitha (Leaf-shaped Pitha)',
- 'atikka pitha', 'bhapa pitha',
- 'bibikhana pitha',
- 'binni chaler pitha',
- 'chitoi pitha',
- 'choi pitha',
- 'dim shundori pitha',
- 'dudh chitoi pitha',
- 'dudh puli pitha',
- 'fuljhuri pitha',
- 'jhinuk pitha',
- 'khejur pitha',
- 'mera pitha',
- 'nokshi pitha',
- 'patisapta pitha',
- 'puli pitha',
- 'semai pitha',
- 'teler pitha'
+ 'Atikka Pitha', 'bhapa Pitha',
+ 'Bibikhana Pitha',
+ 'Binni Chaler Pitha',
+ 'Chitoi Pitha',
+ 'Choi Pitha',
+ 'Dim Shundori Pitha',
+ 'Dudh Chitoi Pitha',
+ 'Dudh Puli Pitha',
+ 'Fuljhuri Pitha',
+ 'Jhinuk Pitha',
+ 'Khejur Pitha',
+ 'Mera Pitha',
+ 'Nokshi Pitha',
+ 'Patisapta Pitha',
+ 'Puli Pitha',
+ 'Semai Pitha',
+ 'Teler Pitha'
 ]
 
-model = load_learner("models/pitha-recognizer-v2.pkl")
-learn=learn.export("pitha-recognizer-v2-py310.pkl")
+model = load_learner("models/Pitha-recognizer-v2.pkl")
+learn=learn.export("Pitha-recognizer-v2-py310.pkl")
 
 def recognize_image(image):
     img = PILImage.create(image)
