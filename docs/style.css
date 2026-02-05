@@ -4,7 +4,7 @@
 
 
 body {
-  background: linear-gradient(135deg, #f6f9ff, #eef2f7);
+  background: linear-gradient(135deg, #f3d89d, hsl(61, 86%, 72%));
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 .page-header .page-title {
