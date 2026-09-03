@@ -38,13 +38,6 @@ layout: page
       const result = await client.predict("/recognize_image", { image: file });
       const data = result.data;
 
-      /*
-        POSSIBLE DATA SHAPES:
-        1) ["Patishapta"]
-        2) [{ label: "Patishapta", confidence: 0.82 }]
-        3) [[{ label, confidence }, { label, confidence }]]
-      */
-
       let label = null;
       let confidence = null;
 
