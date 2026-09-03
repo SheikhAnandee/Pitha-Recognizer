@@ -5,10 +5,12 @@ An image classification project covering the full pipeline — data collection, 
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/SheikhAnandee/pitha-recognizer)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-orange)](https://sheikhanandee.github.io/Pitha-Recognizer/)
 
+<!--
 ![Contributors](https://img.shields.io/github/contributors/SheikhAnandee/Pitha-Recognizer?color=red)
 ![Issues](https://img.shields.io/github/issues/SheikhAnandee/Pitha-Recognizer)
 ![Good First Issues](https://img.shields.io/github/issues/SheikhAnandee/Pitha-Recognizer/good%20first%20issue)
-![Last Commit](https://img.shields.io/github/last-commit/SheikhAnandee/Pitha-Recognizer)
+![Last Commit](https://img.shields.io/github/last-commit/SheikhAnandee/Pitha-Recognizer) 
+-->
 ![Repo Size](https://img.shields.io/github/repo-size/SheikhAnandee/Pitha-Recognizer)
 ![License](https://img.shields.io/github/license/SheikhAnandee/Pitha-Recognizer)
 # Overview
