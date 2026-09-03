@@ -1,27 +1,18 @@
 # Pitha-Recognizer
-An image classification model from data collection, cleaning, model training, deployment and API integration. <br/>
-Can classify 20 different types of pitha<br/>
-Types of Pitha following:<br/>
-1. Bhapa Pitha
-2. Chitoi Pitha
-3. Tel er Pitha
-4. Nakshi Pitha
-5. Bibikhana Pitha
-6. Puli Pitha
-7. Patisapta Pitha
-8. Choi Pitha
-9. Khejur Pitha
-10. Dudh Chitoi Pitha
-11. Bini Pitha
-12. Pata Pitha
-13. Jhinuk Pitha
-14. Mera Pitha
-15. Chita Pitha
-16. Dudh Puli Pitha
-17. Fuljhuri Pitha
-18. Semai Pitha
-19. Dim Shundori Pitha
-20. Atikka Pitha
+An image classification project covering the full pipeline — data collection, cleaning, model training, deployment, and API integration. <br/>
+
+[![Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://sheikhanandee.github.io/Pitha-Recognizer/)
+[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/SheikhAnandee/pitha-recognizer)
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-orange)](https://sheikhanandee.github.io/Pitha-Recognizer/)
+
+![Contributors](https://img.shields.io/github/contributors/SheikhAnandee/Pitha-Recognizer?color=red)
+![Issues](https://img.shields.io/github/issues/SheikhAnandee/Pitha-Recognizer)
+![Good First Issues](https://img.shields.io/github/issues/SheikhAnandee/Pitha-Recognizer/good%20first%20issue)
+![Last Commit](https://img.shields.io/github/last-commit/SheikhAnandee/Pitha-Recognizer)
+![Repo Size](https://img.shields.io/github/repo-size/SheikhAnandee/Pitha-Recognizer)
+![License](https://img.shields.io/github/license/SheikhAnandee/Pitha-Recognizer)
+# Overview
+Pitha-Recognizer can classify **20 different types of Pitha**(traditional Bengali rice cakes) from an image, and is deployed as a live, interactive web app.
 
 # Dataset Preparation
 **Data Collection:** Downloaded from DuckDuckGo using term name <br/>
