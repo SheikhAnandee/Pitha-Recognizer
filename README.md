@@ -49,12 +49,14 @@ The model recognizes the following 20 categories of traditional Bengali Pitha:
 - **🌐 Web App**: [GitHub Pages](https://sheikhanandee.github.io/Pitha-Recognizer/)
 
 ## Model Deployment
+
 I deployed the model to HuggingFace Spaces Gradio App. The implementation can be found in the `deployment` folder or [here](https://huggingface.co/spaces/SheikhAnandee/pitha-recognizer). <br/>
 <img src="deployment/gradio_app.png" width="800" height="800">
 
 ## API Integration with GitHub Pages
+
 The deployed model's API is integrated into a [GitHub Pages website](https://sheikhanandee.github.io/Pitha-Recognizer/). Implementation and other details can be found in the `deployment` folder. <br/>
-<img src="deployment/web_app.png" width="800" height="800">
+<img src="deployment/web app.png" width="800" height="800">
 
 # Dataset Preparation
 **Data Collection:** Downloaded from DuckDuckGo using term name <br/>
@@ -70,3 +72,79 @@ Details can be found in `notebooks/pitha_images_prep.ipynb`
 
 # API integration with GitHub Pages
 The deployed model API is integrated [here](https://sheikhanandee.github.io/Pitha-Recognizer/) in GitHub Pages Website. Implementation and other details can be found in `docs` folder.
+
+## 📁 Project Structure
+
+```
+Pitha-Recognizer/
+├── README.md                       # Project documentation
+│
+├── 📁 notebooks/                   # Data prep, training & cleaning notebooks
+│   ├── pitha_images_prep.ipynb     # Data collection & DataLoader setup
+│   └── pitha_train_clean.ipynb     # Training and data cleaning
+│
+├── 📁 deployment/                  # Deployment files
+│   ├── app.py                      # Gradio application
+│   ├── gradio_app.png              # App screenshot
+│   └── requirements.txt            # Python dependencies
+│
+└── 📁 docs/                        # GitHub Pages files
+    ├── index.html                  # Web interface
+    └── script.js                   # JavaScript functionality
+```
+
+## 🔧 Installation & Usage
+
+### Local Setup
+
+1. Clone the repository:
+
+```
+git clone https://github.com/SheikhAnandee/Pitha-Recognizer.git
+cd Pitha-Recognizer
+```
+
+2. Install dependencies:
+
+```
+pip install fastai gradio
+```
+
+3. Run the Gradio app locally:
+
+```
+python deployment/app.py
+```
+
+### Using the Web Interface
+
+1. Visit the [live app](https://sheikhanandee.github.io/Pitha-Recognizer/)
+2. Upload an image of a Pitha
+3. Get instant predictions with confidence scores
+
+## 🎓 Applications
+
+This tool can be useful for:
+
+- **Cultural preservation**: Documenting and identifying traditional Bengali Pitha varieties
+- **Food & recipe apps**: Automatic tagging of Pitha images
+- **Education**: Interactive learning about regional Bengali cuisine
+
+## 🙏 Acknowledgments
+
+- **fastai** for the deep learning framework
+- **Gradio** for the interface and deployment experience
+- **Hugging Face** for the deployment platform
+- **DuckDuckGo** for the image search source
+
+## 📞 Contact
+
+**Sheikh Anandee**
+
+- GitHub: [@SheikhAnandee](https://github.com/SheikhAnandee)
+- Hugging Face: [SheikhAnandee](https://huggingface.co/SheikhAnandee)
+- Project Link: <https://github.com/SheikhAnandee/Pitha-Recognizer>
+
+---
+
+⭐ **Star this repository if you found it helpful!** ⭐
