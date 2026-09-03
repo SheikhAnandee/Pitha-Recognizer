@@ -13,11 +13,32 @@ An image classification project covering the full pipeline — data collection, 
 ![Good First Issues](https://img.shields.io/github/issues/SheikhAnandee/Pitha-Recognizer/good%20first%20issue)
 ![Last Commit](https://img.shields.io/github/last-commit/SheikhAnandee/Pitha-Recognizer) 
 -->
-![Repo Size](https://img.shields.io/github/repo-size/SheikhAnandee/Pitha-Recognizer)
-![License](https://img.shields.io/github/license/SheikhAnandee/Pitha-Recognizer)
+
 # Overview
 Pitha-Recognizer can classify **20 different types of Pitha**(traditional Bengali rice cakes) from an image, and is deployed as a live, interactive web app.
 
+# Types of Pitha
+#	Pitha
+1	Bhapa Pitha
+2	Chitoi Pitha
+3	Tel er Pitha
+4	Nakshi Pitha
+5	Bibikhana Pitha
+6	Puli Pitha
+7	Patisapta Pitha
+8	Choi Pitha
+9	Khejur Pitha
+10	Dudh Chitoi Pitha
+11	Bini Pitha
+12	Pata Pitha
+13	Jhinuk Pitha
+14	Mera Pitha
+15	Chita Pitha
+16	Dudh Puli Pitha
+17	Fuljhuri Pitha
+18	Semai Pitha
+19	Dim Shundori Pitha
+20	Atikka Pitha
 # Dataset Preparation
 **Data Collection:** Downloaded from DuckDuckGo using term name <br/>
 **DataLoader:** Used fastai DataBlock API to set up the DataLoader. <br/>
