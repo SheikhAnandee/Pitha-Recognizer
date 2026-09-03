@@ -18,27 +18,32 @@ An image classification project covering the full pipeline — data collection, 
 Pitha-Recognizer can classify **20 different types of Pitha**(traditional Bengali rice cakes) from an image, and is deployed as a live, interactive web app.
 
 # Types of Pitha
-#	Pitha
-1	Bhapa Pitha
-2	Chitoi Pitha
-3	Tel er Pitha
-4	Nakshi Pitha
-5	Bibikhana Pitha
-6	Puli Pitha
-7	Patisapta Pitha
-8	Choi Pitha
-9	Khejur Pitha
-10	Dudh Chitoi Pitha
-11	Bini Pitha
-12	Pata Pitha
-13	Jhinuk Pitha
-14	Mera Pitha
-15	Chita Pitha
-16	Dudh Puli Pitha
-17	Fuljhuri Pitha
-18	Semai Pitha
-19	Dim Shundori Pitha
-20	Atikka Pitha
+
+The model recognizes the following 20 categories of traditional Bengali Pitha:
+
+| # | Pitha | Description |
+|---|-------|--------------|
+| 1 | **Bhapa Pitha** | Round, steamed rice cake — soft and pale white |
+| 2 | **Chitoi Pitha** | Flat, round, spongy disc, usually served with jaggery syrup or milk. |
+| 3 | **Tel er Pitha** | Deep-fried, puffy fritter with a golden-brown crust |
+| 4 | **Nakshi Pitha** | Intricately patterned, hand-carved or embossed floral/geometric patterns |
+| 5 | **Bibikhana Pitha** | Dense, baked cake, golden-brown, usually cut into diamond or square pieces |
+| 6 | **Puli Pitha** | Crescent-shaped dumpling with pleated, braided edges |
+| 7 | **Patisapta Pitha** | White or  pale golden crepe rolled around a jaggery, or kheer filling. |
+| 8 | **Choi Pitha** | 	Small, soft rice-flour dumplings, usually pale white and irregularly rounded |
+| 9 | **Khejur Pitha** | Small, elongated, date-shaped fried sweet with a golden-brown surface|
+| 10 | **Dudh Chitoi Pitha** | Round, spongy rice cake similar to Chitoi, served soaking in milk |
+| 11 | **Bini Pitha** | milky white color rice cake made using binni (glutinous) rice roll shaped (like Patishapta) |
+| 12 | **Pata Pitha** | crispy, fried , folded shape resembling a leaf  |
+| 13 | **Jhinuk Pitha** | Rice-flour dough shaped like a seashell, fried sweet with ridged, curved edges |
+| 14 | **Mera Pitha** | white or slightly golden, shaped into small oval dumplings |
+| 15 | **Chita Pitha** | 	Thin, lacy rice cake with a net-like, perforated  variation of chitoi pitha |
+| 16 | **Dudh Puli Pitha** | Crescent-shaped coconut dumplings served submerged in sweetened milk |
+| 17 | **Fuljhuri Pitha** | Crispy fried rice-flour pitha, often flower shaped decoratively. |
+| 18 | **Semai Pitha** | Thin vermicelli strands, bundled made with fine rice-flour vermicelli |
+| 19 | **Dim Shundori Pitha** | An egg-shaped or egg-based sweet pitha with a rich, custard-like texture. |
+| 20 | **Atikka Pitha** | sticky rice cake, rectangular shaped wrapped and steamed in banana leaves|
+
 # Dataset Preparation
 **Data Collection:** Downloaded from DuckDuckGo using term name <br/>
 **DataLoader:** Used fastai DataBlock API to set up the DataLoader. <br/>
