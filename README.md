@@ -4,6 +4,8 @@ An image classification project covering the full pipeline — data collection, 
 [![Status](https://img.shields.io/badge/Status-Live-brightgreen)](https://sheikhanandee.github.io/Pitha-Recognizer/)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/SheikhAnandee/pitha-recognizer)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-orange)](https://sheikhanandee.github.io/Pitha-Recognizer/)
+![Repo Size](https://img.shields.io/github/repo-size/SheikhAnandee/Pitha-Recognizer)
+![License](https://img.shields.io/github/license/SheikhAnandee/Pitha-Recognizer)
 
 <!--
 ![Contributors](https://img.shields.io/github/contributors/SheikhAnandee/Pitha-Recognizer?color=red)
